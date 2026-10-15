@@ -63,5 +63,10 @@ public class PlayerController : MonoBehaviour
         // you can use playerPos.Normalized to make the speed consisetent but i like it unnormalized
         playerPos = Vector3.zero;
         //this resets the position so it doesnt accumulate values from previous frames exponentially
+
+        Vector3 mouseDirection = Input.mousePosition - Camera.main.WorldToScreenPoint(this.transform.position);
+        float angle = Mathf.Atan2(mouseDirection.x, mouseDirection.y) * Mathf.Rad2Deg;
+        this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
     }
 }

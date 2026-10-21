@@ -17,7 +17,6 @@ public class Collectable : MonoBehaviour
     void Update()
     {
         distanceToPlayer = Vector3.Distance(playerTransform.position, collectableTransform.position);
-        Debug.Log(Vector3.Distance(playerTransform.position, collectableTransform.position));
     
         if(distanceToPlayer <= 1f)
         { 

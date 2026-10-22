@@ -18,14 +18,13 @@ public class EnemyBlob : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(moveDirection * Time.deltaTime);
+        transform.Translate(moveDirection.normalized *2* Time.deltaTime);
         distanceToPlayer = Vector3.Distance(playerTransform.position, transform.position);
-
         if (distanceToPlayer <= attackDistance)
         {
             Health.HP = Health.HP - damage;
             Debug.Log(Health.HP);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 

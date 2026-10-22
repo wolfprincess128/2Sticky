@@ -23,7 +23,7 @@ public class Collectable : MonoBehaviour
         { 
             scoreRef.scorePoints++;
             Debug.Log(scoreRef.scorePoints);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

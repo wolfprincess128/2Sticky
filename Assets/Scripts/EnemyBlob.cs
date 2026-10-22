@@ -4,6 +4,7 @@ public class EnemyBlob : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float attackDistance;
+    [SerializeField] private GameObject Explosion;
 
     [SerializeField] private Vector3 moveDirection;
     private Transform playerTransform;
@@ -24,6 +25,8 @@ public class EnemyBlob : MonoBehaviour
         {
             Health.HP = Health.HP - damage;
             Debug.Log(Health.HP);
+            Explosion.transform.parent = null;
+            Explosion.SetActive(true);
             Destroy(this.gameObject);
         }
     }

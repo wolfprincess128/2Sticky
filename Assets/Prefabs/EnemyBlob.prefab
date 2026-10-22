@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3918593188581143786}
   - component: {fileID: 479721892065010783}
   - component: {fileID: 6648534891609783172}
+  - component: {fileID: 8729404022399399184}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -41,7 +42,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502718769437175392}
   serializedVersion: 8
-  lengthInSec: 2
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -116,7 +117,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -169,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -604,7 +605,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 15
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -4837,6 +4838,19 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &8729404022399399184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502718769437175392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2e99e380f3c3e4698307b58f1620f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyAfterTime
+  delay: 2
 --- !u!1 &7462346670991642598
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,7 +4865,6 @@ GameObject:
   - component: {fileID: 1770777619880611601}
   - component: {fileID: 5701758538023540818}
   - component: {fileID: 6729643146239518963}
-  - component: {fileID: 8075004012447759290}
   - component: {fileID: -5751555906023148357}
   m_Layer: 0
   m_Name: EnemyBlob
@@ -4966,9 +4979,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a379573734175f24590da4a1427ab146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBlob
-  damage: 0
-  attackDistance: 0
-  moveDirection: {x: 0, y: 0, z: 0}
+  damage: 1
+  attackDistance: 1.3
+  Explosion: {fileID: 502718769437175392}
+  moveDirection: {x: 1, y: 0, z: 1}
 --- !u!54 &6729643146239518963
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4996,27 +5010,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 96
   m_CollisionDetection: 0
---- !u!135 &8075004012447759290
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7462346670991642598}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-5751555906023148357
 MonoBehaviour:
   m_ObjectHideFlags: 0

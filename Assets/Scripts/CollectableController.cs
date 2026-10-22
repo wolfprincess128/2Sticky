@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    Transform collectableTransform;
-    Transform playerTransform;
-    float distanceToPlayer;
+    private Transform collectableTransform;
+    private Transform playerTransform;
+    private float distanceToPlayer;
     Score scoreRef;
     void Start()
     {
         collectableTransform = GameObject.Find("Collectable").GetComponent<Transform>();
         playerTransform = GameObject.Find("player").GetComponent<Transform>();
+        scoreRef = GameObject.Find("Collectable").GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -22,7 +23,7 @@ public class Collectable : MonoBehaviour
         { 
             scoreRef.scorePoints++;
             Debug.Log(scoreRef.scorePoints);
-            GameObject.Destroy(collectableTransform.gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public int scorePoints;
+    public int scorePoints = 0;
 }

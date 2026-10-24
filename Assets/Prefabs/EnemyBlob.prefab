@@ -4865,7 +4865,6 @@ GameObject:
   - component: {fileID: 1770777619880611601}
   - component: {fileID: 5701758538023540818}
   - component: {fileID: 6729643146239518963}
-  - component: {fileID: -5751555906023148357}
   m_Layer: 0
   m_Name: EnemyBlob
   m_TagString: Untagged
@@ -5010,16 +5009,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 96
   m_CollisionDetection: 0
---- !u!114 &-5751555906023148357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7462346670991642598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189edb11f5b053b4ea0592b6b6631f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ForLoopExample
-  itemsToDrop: 

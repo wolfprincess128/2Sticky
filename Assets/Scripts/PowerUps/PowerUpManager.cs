@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PowerUpManager : MonoBehaviour
 {
     private PowerUp[] powerUps = new PowerUp[3];
+    public int[] powerupCount = new int[3];
 
     void Start()
     {
@@ -29,17 +30,22 @@ public class PowerUpManager : MonoBehaviour
 
     private void HandlePowerupSelection()
     {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-            ActvatePowerup(0);
+        if (Keyboard.current.digit1Key.wasPressedThisFrame )
+            ActvatePowerup(0); // Increases Movement Speed 2x
         if (Keyboard.current.digit2Key.wasPressedThisFrame)
-            ActvatePowerup(1);
+            ActvatePowerup(1); // Makes you temporarily Invunerable
         if (Keyboard.current.digit3Key.wasPressedThisFrame)
-            ActvatePowerup(2);
+            ActvatePowerup(2); // Makes Enemy Speed Lower
     }
     private void ActvatePowerup(int _Index)
     {
-        powerUps[_Index].isActive = true;
-        Debug.Log("Your Powerup is !!! Active!!!");
+        if (powerUps[_Index].isActive == false && powerupCount[_Index] > 0)
+                {
+            powerUps[_Index].isActive = true;
+            powerupCount[_Index]--;
+            Debug.Log("Your Powerup is !!! Active!!!");
+        }
+       
     }
 
 }

@@ -17,7 +17,7 @@ public class PowerUp
     {
         powerupName = _name;
         powerupDuration = _duration;
-        originalDuration = _duration;;
+        originalDuration = _duration;
     }
     public void CountDown()
     {

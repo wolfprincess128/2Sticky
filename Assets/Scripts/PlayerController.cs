@@ -4,8 +4,9 @@ public class PlayerController : MonoBehaviour
 {
    float xInput;
    float zInput;
-   bool sprintInput;
-   bool snekInput;
+   bool sneakInput;
+
+   public bool isSpeedEffect;
    public float baseSpeed;
    public float speedMultiplier;
 
@@ -15,18 +16,30 @@ public class PlayerController : MonoBehaviour
     {
         playerMove = this.gameObject.GetComponent<Transform>();
         //setting the players tranform to the objects transform
-
+        isSpeedEffect = false;
     }
 
+    void HandleSpeed()
+    {
+        if (sneakInput)
+        { 
+            speedMultiplier = 0.5f;
+        }
+        else if (isSpeedEffect)
+        {
+            speedMultiplier = 2f;
+        }
+        else
+        {
+            speedMultiplier = 1f;
+        }
+    }
     void Update()
     {
         xInput = Input.GetAxis("Vertical");
         zInput = Input.GetAxis("Horizontal");
-
+        sneakInput = Input.GetKey(KeyCode.LeftShift);
         //these map controls for sprinting and sneaking which i probably will nopt be using LOL
-        snekInput = Input.GetKey(KeyCode.LeftControl);
-        sprintInput = Input.GetKey(KeyCode.LeftShift);
-
         //these map controls based on keys associated with hor and ver movement
         //for example left key would make the zInput Equal -1 and the right 1 (with easing)
 
@@ -40,19 +53,8 @@ public class PlayerController : MonoBehaviour
             playerPos.z -= zInput;
         }
 
-        if (snekInput)
-        { 
-            speedMultiplier = 0.5f;
-        }
-        else if (sprintInput)
-        {
-            speedMultiplier = 2f;
-        }
-        else
-        {
-            speedMultiplier = 1f;
-        }
-
+        
+        HandleSpeed();
         //these statements are used as three different states the player can be in.
         //I dont think they can be in all three at once.
 

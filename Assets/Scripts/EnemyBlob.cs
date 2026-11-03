@@ -6,24 +6,40 @@ public class EnemyBlob : MonoBehaviour
     [SerializeField] private float attackDistance;
     [SerializeField] private GameObject Explosion;
 
+    public static bool isSlowEffect;
+
+    private float speedMultiplier;
+
     [SerializeField] private Vector3 moveDirection;
     private Transform playerTransform;
     private float distanceToPlayer;
-    playerHealth Health;
+    PlayerHealth Health;
 
+    void HandleSpeed()
+    {
+        if (isSlowEffect)
+        {
+            speedMultiplier = 0.75f;
+        }
+        else
+        {
+            speedMultiplier = 2.5f;
+        }
+    }
     void Start()
     {
         playerTransform = GameObject.Find("player").GetComponent<Transform>();
-        Health = GameObject.Find("player").GetComponent<playerHealth>();
+        Health = GameObject.Find("player").GetComponent<PlayerHealth>();
     }
 
     void Update()
     {
-        transform.Translate(moveDirection.normalized *2* Time.deltaTime);
+        HandleSpeed();
+        transform.Translate(moveDirection.normalized * speedMultiplier * Time.deltaTime);
         distanceToPlayer = Vector3.Distance(playerTransform.position, transform.position);
         if (distanceToPlayer <= attackDistance)
         {
-            Health.HP = Health.HP - damage;
+            Health.takeDamage(damage);
             Debug.Log(Health.HP);
             Explosion.transform.parent = null;
             Explosion.SetActive(true);

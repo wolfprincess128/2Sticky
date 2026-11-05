@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5536787866536527480}
   - component: {fileID: 8919040049088450949}
   - component: {fileID: 2247644881398206724}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PowerUp - Invincibility
   m_TagString: Untagged
   m_Icon: {fileID: 0}

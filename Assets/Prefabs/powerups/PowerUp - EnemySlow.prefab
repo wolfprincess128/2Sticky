@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8516612102543849083}
   - component: {fileID: 150749669041571437}
   - component: {fileID: 565247257529327372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PowerUp - EnemySlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

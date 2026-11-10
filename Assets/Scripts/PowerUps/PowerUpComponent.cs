@@ -13,6 +13,7 @@ public class PowerUpComponent : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             powerupManager.powerupCount[referenceIndex]++;
+            
             Destroy(gameObject);
         }
     }

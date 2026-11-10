@@ -8,6 +8,8 @@ public class PowerUpManager : MonoBehaviour
     private PlayerController Player;
     private PlayerHealth playerHP;
 
+    private PowerUpUIManager powerupUI;
+
     
 
     void Start()
@@ -17,12 +19,24 @@ public class PowerUpManager : MonoBehaviour
         powerUps[2] = new PowerUp("ChalkDuster", 7);
         Player = GameObject.Find("player").GetComponent<PlayerController>();
         playerHP = GameObject.Find("player").GetComponent<PlayerHealth>();
+        powerupUI = GameObject.Find("powerup_panels").GetComponent<PowerUpUIManager>();
     }
     void Update()
     {
         HandleCountdowns();
         HandlePowerupSelection();
         HandlePowerUpEffects();
+        HandlePowerUpUI();
+    }
+    private void HandlePowerUpUI()
+    {
+        for (int i = 0; i < powerupCount.Length; i++)
+        {
+            if (powerupCount[i] > 0)
+            {
+                powerupUI.UpdatePowerUps(i,powerupCount[i].ToString() + " " +powerUps[i].powerupName);
+            }
+        }
     }
     private void HandleCountdowns()
     {
@@ -73,8 +87,9 @@ public class PowerUpManager : MonoBehaviour
             powerUps[_Index].isActive = true;
             powerupCount[_Index]--;
             Debug.Log("Your Powerup is !!! Active!!!");
+            powerupUI.UpdatePowerUps(_Index,"");
         }
-       
+
     }
 
 }

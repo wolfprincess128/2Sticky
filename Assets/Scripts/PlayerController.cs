@@ -1,27 +1,75 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-   float xInput;
-   float zInput;
-   bool sneakInput;
+   [SerializeField] private InputActionReference moveAction;
+   [SerializeField] private InputActionReference lookAction;
+   [SerializeField] private InputActionReference slowAction;
+   Vector2 moveInput;
+   Vector2 lookInput;
 
    public bool isSpeedEffect;
-   public float baseSpeed;
-   public float speedMultiplier;
+   [SerializeField] private float baseSpeed;
+   private float speedMultiplier;
+   private Rigidbody playerBody;
 
    Transform playerMove;
    Vector3 playerPos;
+   private void OnEnable()
+   {
+    moveAction.action.Enable();
+    lookAction.action.Enable();
+    slowAction.action.Enable();
+   }
+      private void OnDisable()
+   {
+    moveAction.action.Disable();
+    lookAction.action.Disable();
+    slowAction.action.Disable();
+   }
+
     void Start()
     {
         playerMove = this.gameObject.GetComponent<Transform>();
-        //setting the players tranform to the objects transform
-        isSpeedEffect = false;
+        playerBody = GetComponent<Rigidbody>();
+        baseSpeed = 7f;
+    }
+    void FixedUpdate()
+    {
+      Vector2 direction = moveInput;
+      float speed = baseSpeed * speedMultiplier;
+
+      playerBody.linearVelocity = new Vector3(
+        direction.x * speed,
+        playerBody.linearVelocity.y,
+        direction.y * speed
+      );  
+    }
+    void Update()
+    {
+        moveInput = moveAction.action.ReadValue<Vector2>();
+        lookInput = lookAction.action.ReadValue<Vector2>();
+        
+        HandleSpeed();
+
+        Vector2 direction = -lookInput;
+
+        if (lookAction.action.activeControl?.device is Mouse)
+        {
+            Vector2 playerOnScreen = Camera.main.WorldToScreenPoint(transform.position);
+            direction =  playerOnScreen - Mouse.current.position.ReadValue();
+        }
+        if (direction.sqrMagnitude > 0.05f)
+        {
+            transform.forward = new Vector3(direction.y, 0f, -direction.x);
+        }
+
     }
 
-    void HandleSpeed()
+        void HandleSpeed()
     {
-        if (sneakInput)
+        if (slowAction.action.IsPressed())
         { 
             speedMultiplier = 0.5f;
         }
@@ -34,47 +82,6 @@ public class PlayerController : MonoBehaviour
             speedMultiplier = 1f;
         }
     }
-    void Update()
-    {
-        xInput = Input.GetAxis("Vertical");
-        zInput = Input.GetAxis("Horizontal");
-        sneakInput = Input.GetKey(KeyCode.LeftShift);
-        //these map controls for sprinting and sneaking which i probably will nopt be using LOL
-        //these map controls based on keys associated with hor and ver movement
-        //for example left key would make the zInput Equal -1 and the right 1 (with easing)
-
-        if (xInput != 0)
-        {
-            playerPos.x += xInput;
-            // If the player has held a dir key it will translate the player by that amount per frame
-        }
-        if (zInput != 0)
-        {
-            playerPos.z -= zInput;
-        }
-
-        
-        HandleSpeed();
-        //these statements are used as three different states the player can be in.
-        //I dont think they can be in all three at once.
-
-        playerMove.Translate(playerPos * baseSpeed * speedMultiplier * Time.deltaTime, Space.World);
-        //This does the actual translation on the literal object of the player's transform
-        //delta time scales movement between frames which keeps the movement speed constant
-        // you can use playerPos.Normalized to make the speed consisetent but i like it unnormalized
-        //Space.World is used instead of the default local space. 
-        playerPos = Vector3.zero;
-        //this resets the position so it doesnt accumulate values from previous frames exponentially
-
-        Vector3 mouseDirection = Input.mousePosition - Camera.main.WorldToScreenPoint(this.transform.position);
-        float angle = Mathf.Atan2(mouseDirection.x, mouseDirection.y) * Mathf.Rad2Deg;
-        this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
-        
-        // Line one creates a new variable for tracking the mouses position. It does this by getting the literal mouse position and
-        //comparing it to an point in the 3d space.
-        // Line two creates an angle variable which is updated using a triganometry function to determine the angle the 3d sphere needs to face to
-        // face the mouses position.
-        //Line 3 Then rotates the player object to this angle. 
-
-    }
 }
+
+

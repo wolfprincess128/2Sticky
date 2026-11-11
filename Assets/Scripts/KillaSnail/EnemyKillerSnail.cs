@@ -16,11 +16,13 @@ public class EnemyKillerSnail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        agent.SetDestination(playerTransform.position);
+        float distance = DistanceToTarget();
     }
 
-    private void DistanceToTarget() 
+    private float DistanceToTarget() 
     {
-     
+     float distance = Vector3.Distance(playerTransform.position, playerTransform.position);
+     return distance;
     }
 }

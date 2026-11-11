@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyBlob : MonoBehaviour
 {
@@ -6,11 +7,14 @@ public class EnemyBlob : MonoBehaviour
     [SerializeField] private float attackDistance;
     [SerializeField] private GameObject Explosion;
 
+    private NavMeshAgent agent;
+
     public static bool isSlowEffect;
 
     private float speedMultiplier;
 
     [SerializeField] private Vector3 moveDirection;
+
     private Transform playerTransform;
     private float distanceToPlayer;
     PlayerHealth Health;
@@ -19,24 +23,27 @@ public class EnemyBlob : MonoBehaviour
     {
         if (isSlowEffect)
         {
-            speedMultiplier = 0.75f;
+            agent.speed = 0.75f;
         }
         else
         {
-            speedMultiplier = 2.5f;
+            agent.speed = 2.5f;
         }
     }
     void Start()
     {
         playerTransform = GameObject.Find("player").GetComponent<Transform>();
         Health = GameObject.Find("player").GetComponent<PlayerHealth>();
+        agent = this.gameObject.GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
         HandleSpeed();
-        transform.Translate(moveDirection.normalized * speedMultiplier * Time.deltaTime);
-        distanceToPlayer = Vector3.Distance(playerTransform.position, transform.position);
+        //transform.Translate(moveDirection.normalized * speedMultiplier * Time.deltaTime);
+        //distanceToPlayer = Vector3.Distance(playerTransform.position, transform.position);
+        agent.SetDestination(playerTransform.position);
+        float distanceToPlayer = DistanceToTarget();
         if (distanceToPlayer <= attackDistance)
         {
             Health.takeDamage(damage);
@@ -45,6 +52,12 @@ public class EnemyBlob : MonoBehaviour
             Explosion.SetActive(true);
             Destroy(this.gameObject);
         }
+    }
+
+    private float DistanceToTarget() 
+    {
+     float distance = Vector3.Distance(transform.position, playerTransform.position);
+     return distance;
     }
 
     private void OnCollisionEnter(Collision other)

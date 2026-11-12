@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
-    public string weaponName;
-    public int weaponAmmo;
+    private float projectileSpeed;
+    private int projectileDamage;
+    private int weaponAmmo;
     
     public void Attack()
     {

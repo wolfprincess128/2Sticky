@@ -18,7 +18,11 @@ public class PowerUpManager : MonoBehaviour
     {
         powerUps[0] = new PowerUp("Rum and Whine", 7);
         powerUps[1] = new PowerUp("Straight Vodka", 3);
+<<<<<<< Updated upstream
         powerUps[2] = new PowerUp("10 for £5 shots", 7);
+=======
+        powerUps[2] = new PowerUp("10 for Â£5 shots", 7);
+>>>>>>> Stashed changes
         Player = GameObject.Find("player").GetComponent<PlayerController>();
         playerHP = GameObject.Find("player").GetComponent<PlayerHealth>();
         powerupUI = GameObject.Find("powerup_panels").GetComponent<PowerUpUIManager>();

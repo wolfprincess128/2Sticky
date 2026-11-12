@@ -17,8 +17,8 @@ public class PowerUpManager : MonoBehaviour
     void Start()
     {
         powerUps[0] = new PowerUp("Rum and Whine", 7);
-        powerUps[1] = new PowerUp("Bath Bomb", 3);
-        powerUps[2] = new PowerUp("ChalkDuster", 7);
+        powerUps[1] = new PowerUp("Straight Vodka", 3);
+        powerUps[2] = new PowerUp("10 for £5 shots", 7);
         Player = GameObject.Find("player").GetComponent<PlayerController>();
         playerHP = GameObject.Find("player").GetComponent<PlayerHealth>();
         powerupUI = GameObject.Find("powerup_panels").GetComponent<PowerUpUIManager>();

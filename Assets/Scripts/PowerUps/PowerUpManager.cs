@@ -10,6 +10,8 @@ public class PowerUpManager : MonoBehaviour
 
     private PowerUpUIManager powerupUI;
 
+    private CameraController camFOV;
+
     
 
     void Start()
@@ -20,6 +22,7 @@ public class PowerUpManager : MonoBehaviour
         Player = GameObject.Find("player").GetComponent<PlayerController>();
         playerHP = GameObject.Find("player").GetComponent<PlayerHealth>();
         powerupUI = GameObject.Find("powerup_panels").GetComponent<PowerUpUIManager>();
+        camFOV = GameObject.Find("Camera").GetComponent<CameraController>();
     }
     void Update()
     {
@@ -83,12 +86,13 @@ public class PowerUpManager : MonoBehaviour
     private void ActvatePowerup(int _Index)
     {
         if (powerUps[_Index].isActive == false && powerupCount[_Index] > 0)
-                {
-            powerUps[_Index].isActive = true;
-            powerupCount[_Index]--;
-            Debug.Log("Your Powerup is !!! Active!!!");
-            powerupUI.UpdatePowerUps(_Index,"");
-        }
+            {  
+                camFOV.SwitchFOV();
+                powerUps[_Index].isActive = true;
+                powerupCount[_Index]--;
+                Debug.Log("Your Powerup is !!! Active!!!");
+                powerupUI.UpdatePowerUps(_Index,"");
+            }
 
     }
 

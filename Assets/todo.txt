@@ -1,0 +1,11 @@
+SMALL MECHANICS
+Death/live mechanic (will show score and redirect you to the menu(easy to implement once score is implemented)
+
+MEDIUM MECHANICS
+Interactable environment (plan to add a bar you can pay points to for powerups) (such as a cod nuke, instakill, etc) ( I want two of these maybe lol)
+Lock and key mechanisms for opening up more areas of the club (probably bought with points)
+Dash (barge might happen im not sure it seems like a lot to think about)
+FOV lowering per cocktail (crunk)
+
+LARGE MECHANICS
+Rhythm based score multiplier (press left click or something to a 4/4 song playing in the background to slowly crank up score multiplier)

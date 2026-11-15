@@ -58,11 +58,11 @@ public class PlayerController : MonoBehaviour
         if (lookAction.action.activeControl?.device is Mouse)
         {
             Vector2 playerOnScreen = Camera.main.WorldToScreenPoint(transform.position);
-            direction =  playerOnScreen - Mouse.current.position.ReadValue();
+            direction = Mouse.current.position.ReadValue() - playerOnScreen;
         }
         if (direction.sqrMagnitude > 0.05f)
         {
-            transform.forward = new Vector3(direction.y, 0f, -direction.x);
+            transform.forward = new Vector3(direction.x, 0f, direction.y);
         }
 
     }

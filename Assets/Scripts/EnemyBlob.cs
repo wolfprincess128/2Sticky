@@ -22,12 +22,14 @@ public class EnemyBlob : MonoBehaviour
     private Transform playerTransform;
     private float distanceToPlayer;
     PlayerHealth Health;
+    ScoreManager score;
 
     void Start()
     {
         playerTransform = GameObject.Find("player").GetComponent<Transform>();
         Health = GameObject.Find("player").GetComponent<PlayerHealth>();
         agent = this.gameObject.GetComponent<NavMeshAgent>();
+        score = GameObject.Find("player").GetComponent<ScoreManager>();
     }
 
         void Update()
@@ -41,6 +43,7 @@ public class EnemyBlob : MonoBehaviour
             Debug.Log(Health.HP);
             Explosion.transform.parent = null;
             Explosion.SetActive(true);
+            score.SubtractScore(20);
             Destroy(this.gameObject);
         }
     }
@@ -62,6 +65,7 @@ public class EnemyBlob : MonoBehaviour
 
        if (health <= 0f)
        {
+        score.AddScore(20);
         Destroy(this.gameObject);
        } 
     }

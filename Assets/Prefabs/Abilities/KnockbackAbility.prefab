@@ -160,5 +160,5 @@ MonoBehaviour:
   projectileRate: 6
   projectileDamage: 5
   weaponName: 'Pushback Martini '
-  knockbackForce: 3
+  knockbackForce: 5
   knockbackLength: 0.5

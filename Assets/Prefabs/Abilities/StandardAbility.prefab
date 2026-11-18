@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc1dc1fd3bc19f47ade2534431dac48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbilityFreeze
-  projectile: {fileID: 1709846778015167372}
+  projectile: {fileID: 6947124180816044303, guid: 57cdbfb5417779341897445678f7f417, type: 3}
   projectileSpeed: 15
   projectileRate: 0.5
   projectileDamage: 2

@@ -6,6 +6,7 @@ public class UIButtons : MonoBehaviour
 
     public void OpenLevel(int levelToLoad)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(levelToLoad);
     }
     private void ToggleInactive()

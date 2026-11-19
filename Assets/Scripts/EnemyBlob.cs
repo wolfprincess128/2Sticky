@@ -8,22 +8,19 @@ public class EnemyBlob : MonoBehaviour
     [SerializeField] private float attackDistance;
     [SerializeField] private GameObject Explosion;
     [SerializeField] private GameObject poisonEffect;
+    [SerializeField] private Vector3 moveDirection;
 
     [SerializeField] private float health = 20f;
 
     private NavMeshAgent agent;
-
     public static bool isSlowEffect;
-
     private float speedMultiplier;
-
-    [SerializeField] private Vector3 moveDirection;
-
     private Transform playerTransform;
     private float distanceToPlayer;
     private PlayerHealth Health;
     private ScoreManager score;
     private PowerUpDropper powerup;
+    private ShopTrigger bar;
 
     void Start()
     {
@@ -32,12 +29,25 @@ public class EnemyBlob : MonoBehaviour
         agent = this.gameObject.GetComponent<NavMeshAgent>();
         score = GameObject.Find("player").GetComponent<ScoreManager>();
         powerup = this.gameObject.GetComponent<PowerUpDropper>();
+        bar = GameObject.Find("ShopTrigger").GetComponent<ShopTrigger>();
     }
 
         void Update()
     {
         HandleSpeed();
-        agent.SetDestination(playerTransform.position);
+        if (bar.inShop)
+        {
+            agent.SetDestination(transform.position);
+            Rigidbody rb = this.GetComponent<Rigidbody>();
+            rb.linearVelocity = Vector3.zero;
+
+        }
+        else
+        {
+            agent.SetDestination(playerTransform.position);
+        }
+
+        
         float distanceToPlayer = DistanceToTarget();
         if (distanceToPlayer <= attackDistance)
         {

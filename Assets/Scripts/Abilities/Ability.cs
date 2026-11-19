@@ -35,7 +35,7 @@ public abstract class Ability : MonoBehaviour
     }
     IEnumerator TimeOutProjectile()
     {
-        yield return new WaitForSeconds(projectileRate * 5);
+        yield return new WaitForSeconds(projectileRate * 3);
         Destroy(gameObject);     
     }
 

@@ -13,11 +13,12 @@ private bool menuActive;
         {
         if (!menuActive)
         {
-            Menu.SetActive(true);
-            
+            Menu.SetActive(true);  
+                Time.timeScale = 0f;
         }
         else{
             Menu.SetActive(false);
+                Time.timeScale = 1f;
         }
         menuActive= !menuActive;
         }

@@ -9714,6 +9714,7 @@ GameObject:
   - component: {fileID: 7315533080303465594}
   - component: {fileID: 1601888374613347709}
   - component: {fileID: 1770777619880611601}
+  - component: {fileID: 637892019882666642}
   - component: {fileID: 5701758538023540818}
   - component: {fileID: 6729643146239518963}
   - component: {fileID: 6506619729739920382}
@@ -9819,6 +9820,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &637892019882666642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7462346670991642598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6900b6e01edd709439b8e0aab4a15956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpDropper
+  powerUps:
+  - {fileID: 2472903450951884194, guid: ddadf208b76abf2438f374a89b962fdf, type: 3}
+  - {fileID: 1299705947162288670, guid: e5211922d79446b4e886cd7ab4c58621, type: 3}
+  - {fileID: 9138237573983296327, guid: e622edead42af044abeb379b0b2571e3, type: 3}
 --- !u!114 &5701758538023540818
 MonoBehaviour:
   m_ObjectHideFlags: 0

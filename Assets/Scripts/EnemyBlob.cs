@@ -21,8 +21,9 @@ public class EnemyBlob : MonoBehaviour
 
     private Transform playerTransform;
     private float distanceToPlayer;
-    PlayerHealth Health;
-    ScoreManager score;
+    private PlayerHealth Health;
+    private ScoreManager score;
+    private PowerUpDropper powerup;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class EnemyBlob : MonoBehaviour
         Health = GameObject.Find("player").GetComponent<PlayerHealth>();
         agent = this.gameObject.GetComponent<NavMeshAgent>();
         score = GameObject.Find("player").GetComponent<ScoreManager>();
+        powerup = this.gameObject.GetComponent<PowerUpDropper>();
     }
 
         void Update()
@@ -66,6 +68,7 @@ public class EnemyBlob : MonoBehaviour
        if (health <= 0f)
        {
         score.AddScore(20);
+        powerup.RollPowerup();
         Destroy(this.gameObject);
        } 
     }

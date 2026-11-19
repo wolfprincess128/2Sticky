@@ -8,16 +8,16 @@ public class ScoreManager : MonoBehaviour
     private void Update()
     {
         UpdateTotal();
-        Debug.Log("current: "+ currentscore + " max: " + totalScore);
     }
     public void AddScore(int _amount)
     {
         currentscore += _amount * multiplier;
-        
+        Debug.Log("current: "+ currentscore + " max: " + totalScore);
     }
     public void SubtractScore(int _amount)
     {
         currentscore -= _amount;
+        Debug.Log("current: "+ currentscore + " max: " + totalScore);
     }
     private void UpdateTotal()
     {

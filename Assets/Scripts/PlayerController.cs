@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
    Transform playerMove;
    Vector3 playerPos;
+   private ShopTrigger bar;
+   private Camera playerCamera;
    private void OnEnable()
    {
     moveAction.action.Enable();
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         playerMove = this.gameObject.GetComponent<Transform>();
         playerBody = GetComponent<Rigidbody>();
+        bar = GameObject.Find("ShopTrigger").GetComponent<ShopTrigger>();
         baseSpeed = 7f;
     }
     void FixedUpdate()
@@ -53,6 +56,8 @@ public class PlayerController : MonoBehaviour
         
         HandleSpeed();
 
+        if (bar.inShop) return;
+        
         Vector2 direction = -lookInput;
 
         if (lookAction.action.activeControl?.device is Mouse)

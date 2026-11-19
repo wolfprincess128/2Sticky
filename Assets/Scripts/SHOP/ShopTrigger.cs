@@ -6,7 +6,7 @@ public class ShopTrigger : MonoBehaviour
 {
     private Camera camShop;
     private Camera camMain;
-    public bool inShop;
+    public bool inShop = false;
 
     private void Start()
     {

@@ -258,7 +258,7 @@ Transform:
   m_GameObject: {fileID: 35228673}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.00000004470348, z: -0, w: 1}
-  m_LocalPosition: {x: -10.623135, y: -1.4130101, z: -0.27487373}
+  m_LocalPosition: {x: -6.6231346, y: -1.4130101, z: -0.2748741}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3852,8 +3852,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579850917}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.7071066}
-  m_LocalPosition: {x: 31.788963, y: 2.8530102, z: -1.6196632}
+  m_LocalRotation: {x: -0, y: -0.0000008493661, z: -0, w: 1}
+  m_LocalPosition: {x: 45.176216, y: 2.8530102, z: -3.2200313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3861,7 +3861,7 @@ Transform:
   - {fileID: 1815313425}
   - {fileID: 868021230}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &622785445
 GameObject:
   m_ObjectHideFlags: 0
@@ -16907,8 +16907,8 @@ GameObject:
   m_Component:
   - component: {fileID: 868021230}
   - component: {fileID: 868021233}
-  - component: {fileID: 868021232}
   - component: {fileID: 868021231}
+  - component: {fileID: 868021234}
   m_Layer: 0
   m_Name: ShopCam
   m_TagString: Untagged
@@ -16975,14 +16975,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &868021232
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868021229}
-  m_Enabled: 1
 --- !u!20 &868021233
 Camera:
   m_ObjectHideFlags: 0
@@ -17001,7 +16993,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 33.981167
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -17016,7 +17008,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 45
+  field of view: 38.9
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -17034,6 +17026,14 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!81 &868021234
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868021229}
+  m_Enabled: 0
 --- !u!1 &900277263
 GameObject:
   m_ObjectHideFlags: 0
